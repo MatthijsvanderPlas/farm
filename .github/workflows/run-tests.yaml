@@ -22,6 +22,19 @@ jobs:
       - name: Install sshpass
         run: sudo apt install sshpass
 
-      - name: Connect to VPS with sshpass and execute bash script
-        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }} "bash execute.sh"
+      - name: SSHPASS Github Action
+        # You may pin to the exact commit or the version.
+        # uses: matheusvanzan/sshpass-action@1e96f05518c2e99d17587ee85fa4d64c1612d0f1
+        uses: matheusvanzan/sshpass-action@v1
+        with:
+          # SSHPASS host
+          host: ${{ secrets.HOST }}
+          # SSHPASS username
+          username: "root"
+          # SSHPASS password
+          password: ${{ secrets.PASSWORD }}
+          # SSHPASS commands to run
+          run: bash execute.sh
+               
+
         
