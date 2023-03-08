@@ -25,5 +25,5 @@ jobs:
         run: apt install sshpass
 
       - name: Connect to VPS with 
-        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secretss.HOST }}
+        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }}
 
