@@ -28,11 +28,11 @@ jobs:
         uses: matheusvanzan/sshpass-action@v1
         with:
           # SSHPASS host
-          host: ${{ secrest.HOST }}
+          host: ${{ secrets.HOST }}
           # SSHPASS username
           username: "root"
           # SSHPASS password
-          password: ${{ secrest.PASSWORD }}
+          password: ${{ secrets.PASSWORD }}
           # SSHPASS commands to run
           run: bash execute.sh
                
