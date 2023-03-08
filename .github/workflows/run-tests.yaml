@@ -24,7 +24,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: setup_test
-    if: 
     steps:
       - name: Install sshpass
         run: sudo apt install sshpass
