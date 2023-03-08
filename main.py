@@ -5,10 +5,11 @@ from flask import Flask
 app = Flask(__name__)
 
 # Assign a function to be called when the path `/` is requested
-@app.route('/')
+@app.route("/")
 def index():
-    return 'Hello, world!'
+    return "<h1>Hello, world!</h1>"
 
-@app.route('/cow')
+
+@app.route("/cow")
 def cow():
-    return 'MOoooOo!'
+    return "MOoooOo!"
