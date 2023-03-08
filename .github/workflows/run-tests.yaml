@@ -23,5 +23,8 @@ jobs:
         run: sudo apt install sshpass
 
       - name: Connect to VPS with sshpass and execute bash script
-        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }} "bash execute.sh"
+        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }} 
+        
+      - name: Run Bash
+        run: bash execute.sh
         
