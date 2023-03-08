@@ -2,7 +2,7 @@ name: Run Tests
 
 on: push
 jobs: 
-  setup:
+  setup_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -14,31 +14,22 @@ jobs:
           python-version: '3.10.6'
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: | 
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
         
       - name: Run tests
         run: pytest
 
-  test:
+  deploy:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: setup_test
+    if: 
     steps:
       - name: Install sshpass
         run: sudo apt install sshpass
 
-      - name: SSHPASS Github Action
-        # You may pin to the exact commit or the version.
-        # uses: matheusvanzan/sshpass-action@1e96f05518c2e99d17587ee85fa4d64c1612d0f1
-        uses: matheusvanzan/sshpass-action@v1
-        with:
-          # SSHPASS host
-          host: ${{ secrets.HOST }}
-          # SSHPASS username
-          username: "root"
-          # SSHPASS password
-          password: ${{ secrets.PASSWORD }}
-          # SSHPASS commands to run
-          run: bash execute.sh
+      - name: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{secrets.HOST}} "bash execute.sh"
                
 
         
