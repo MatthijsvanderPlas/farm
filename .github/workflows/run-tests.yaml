@@ -28,7 +28,7 @@ jobs:
       - name: Install sshpass
         run: sudo apt install sshpass
 
-      - name: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{secrets.HOST}} "bash execute.sh"
+      - name: sshpass -p ${{ secrets.PASSWORD }} ssh -oStrictHostKeyChecking=no root@${{secrets.HOST}} "bash execute.sh"
                
 
         
