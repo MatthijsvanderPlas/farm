@@ -18,13 +18,12 @@ jobs:
 
       - name: Run tests
         run: pytest
-        if: succes()
-
-        steps:
       
-          - name: Install sshpass
-            run: apt install sshpass
+      - name: Install sshpass
+        run: apt install sshpass
 
-          - name: Connect to VPS with 
-            run: sshpass -p ${{ VPS.PASSWORD }} ssh root@${{ VPS.HOST }}
-
+      - name: Connect to VPS with 
+        run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }}
+        
+      - name: Run Bash file
+        run: bash execute.sh
