@@ -20,7 +20,7 @@ jobs:
         run: pytest
       
       - name: Install sshpass
-        run: apt install sshpass
+        run: sudo apt install sshpass
 
       - name: Connect to VPS with 
         run: sshpass -p ${{ secrets.PASSWORD }} ssh root@${{ secrets.HOST }}
