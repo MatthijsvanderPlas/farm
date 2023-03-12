@@ -32,6 +32,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.HOST }}
+          username: root
           password: ${{ secrets.PASSWORD }}  
           script: |
             cd /home/farm/
