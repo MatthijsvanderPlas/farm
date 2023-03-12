@@ -32,8 +32,8 @@ jobs:
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.HOST }}
-          username: root
-          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
           script: |
             cd /home/farm/
             git pull origin main
