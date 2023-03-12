@@ -1,0 +1,22 @@
+[Unit]
+# This could be anything that helps you and colleagues know what this
+# service is for.
+Description=farm gunicorn daemon
+# This tells systemd when this application is ready to start
+After=network.target
+
+[Service]
+Type=notify
+DynamicUser=yes
+RuntimeDirectory=farm
+# Where the command supplied in ExecStart be run
+WorkingDirectory=/home/farm/
+ExecStart=/usr/local/bin/gunicorn main:app --reload
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
