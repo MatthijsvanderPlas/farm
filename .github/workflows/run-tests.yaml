@@ -29,7 +29,11 @@ jobs:
         run: sudo apt install sshpass
 
       - name: Connect to VPS and run script
-        run: sshpass -p ${{ secrets.PASSWORD }} ssh -oStrictHostKeyChecking=no root@${{secrets.HOST}} "bash execute.sh"
-               
-
-        
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          password: ${{ secrets.PASSWORD }}  
+          script: |
+            cd /home/farm/
+            git pull origin main
+            systemctl restart farm
