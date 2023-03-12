@@ -33,7 +33,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: root
-          password: ${{ secrets.PASSWORD }}  
+          key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/farm/
             git pull origin main
